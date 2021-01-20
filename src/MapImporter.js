@@ -5,7 +5,7 @@ import React, { useEffect} from 'react'
 const MapInfo = () => {
     useEffect(() => {
       const loader = new Loader({
-          apiKey: "AIzaSyBM1_xC_FX8KU5JyDLDmEYyFoon_AYigbg",
+          apiKey: "AIzaSyA2R5x0ZAR8nkEtHSsJ7hIc1mELB9LlO2Q",
         version: "weekly"
       });
       loader.load().then(()=>{
