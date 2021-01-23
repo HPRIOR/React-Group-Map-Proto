@@ -11,9 +11,9 @@ function App() {
   const [input, setInput] = useState("");
   const [search, setInputWithButton] = useState("");
   const [markers, setMarkers] = useState([]);
-  const [distance, setGroupDistance] = useState(0.0001);
+  const [distance, setGroupDistance] = useState(1);
 
-  const removeLocation = (id) => {
+  const removeLocation = id => {
       // const deleted_marker = markers.find(m => m.id === id);
       // deleted_marker.marker.setMap(null);
       // console.log(deleted_marker)
@@ -76,16 +76,15 @@ function App() {
     setInputWithButton("");
   }
 
-  // this will be triggered by the remove button as the remove button modifies location state
-  // this may be responsble for the weird behaviour whereby the last marker is not deleted from the
-  // map 
+  // TODO state of colours should created. If length of groups is >/< than number of colours, new colours added/removed 
+  // from state. Groups draw their colours from the colour state 
   useEffect(() => {
     if (locations.length === 0) return;
     const groups = groupLocations(locations, distance)
     let group_markers = []
     for(let group of groups){
       var groupColour = Math.floor(Math.random()*16777215).toString(16);
-      let icon = generateIconWith(groupColour)
+      let icon = generateIconWith("#" + groupColour)
       for (let location of group){
         const marker = new window.google.maps.Marker({
           map: window.map,
